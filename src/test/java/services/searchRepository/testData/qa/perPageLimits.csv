@@ -1,0 +1,5 @@
+method,status,query,sortType,orderType,perPage,expected,scenario
+GET,200,java,forks,asc,1,1,perPage = 1: Ensure 1 item is returned
+GET,200,java,forks,asc,100,100,perPage = 100: Ensure 100 items are returned
+GET,200,java,forks,asc,101,100,perPage = 101: Ensure max 100 items are returned
+GET,200,java,forks,asc,200,100,perPage = 200: Ensure max 100 items are returned

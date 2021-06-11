@@ -1,0 +1,3 @@
+method,status,query,perPage,scenario
+GET,200,user:daveremy,10,user: daveremy and perPage = 10
+GET,200,user:daveremy,20,user: daveremy and perPage = 20

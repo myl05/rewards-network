@@ -1,0 +1,8 @@
+method,status,query,sortType,title,sortMethod,orderType,scenario
+GET,200,user:yanglbme,updated,updated_at,isDateSorted,asc,Sort the results by updated and ensure the results are ordered asc
+GET,200,user:yanglbme,updated,updated_at,isDateSorted,desc,Sort the results by updated and ensure the results are ordered desc
+GET,200,user:yanglbme,forks,forks_count,isSorted,asc,Sort the results by forks and ensure the results are ordered asc
+GET,200,user:yanglbme,forks,forks_count,isSorted,desc,Sort the results by forks and ensure the results are ordered desc
+GET,200,user:yanglbme,stars,stargazers_count,isSorted,asc,Sort the results by stars and ensure the results are ordered asc
+GET,200,user:yanglbme,stars,stargazers_count,isSorted,desc,Sort the results by stars and ensure the results are ordered desc
+
