@@ -5,38 +5,38 @@ Feature: Search Repository Service - Tests involving the page or per_page filter
     * callonce read(globalCommonPath)
     * url ghURL + 'search/repositories'
 
-#  Scenario Outline: Ensure correct number of pages are returned based on per_page param: <scenario>
-#    * params {q: '<query>', sort: '<sortType>', order: '<orderType>', per_page: '<perPage>'}
-#    When method <method>
-#    Then status <status>
-#    And assert response.items.length == '<expected>'
-#
-#    Examples:
-#      | read('classpath:services/searchRepository/testData/' + env + '/perPageLimits.csv') |
-#
-#
-#  Scenario: Ensure the number of repos on the last page are correct based on the default per_page count (30) and total_count
-#    # Testing to ensure we have 30 results per page (default), and then on the last page whatever amount is left over
-#    * params {q: 'user:daveremy'}
-#    When method GET
-#    Then status 200
-#    # Get the total count from the response
-#    * def totalCount = response.total_count
-#    # Divide the total count by 30 (default per_page count) then round to the upper integer to get expected page count
-#    * def expectedPages = totalCount / 30
-#    * def expectedPagesRoundedUp = Math.ceil(expectedPages)
-#    # Round to the lower integer and multiply by 30 to calculate the amount to subtract from total count so we can
-#    # check to see if the number of repos on the last page is correct
-#    * def expectedPagesRoundedDown = Math.floor(expectedPages)
-#    * def amountToSubtractFromTotalCount = expectedPagesRoundedDown * 30
-#    * def numberOfReposOnLastPage = totalCount - amountToSubtractFromTotalCount
-#
-#    # Make another request and pass the calculated last page number to check the count of repos on the last page (16)
-#    * params {q: 'user:daveremy', page: '#(expectedPagesRoundedUp)'}
-#    When method GET
-#    Then status 200
-#    # Assert that there are the correct amount of repos on the last page (16)
-#    And assert response.items.length == numberOfReposOnLastPage
+  Scenario Outline: Ensure correct number of pages are returned based on per_page param: <scenario>
+    * params {q: '<query>', sort: '<sortType>', order: '<orderType>', per_page: '<perPage>'}
+    When method <method>
+    Then status <status>
+    And assert response.items.length == '<expected>'
+
+    Examples:
+      | read('classpath:services/searchRepository/testData/' + env + '/perPageLimits.csv') |
+
+
+  Scenario: Ensure the number of repos on the last page are correct based on the default per_page count (30) and total_count
+    # Testing to ensure we have 30 results per page (default), and then on the last page whatever amount is left over
+    * params {q: 'user:daveremy'}
+    When method GET
+    Then status 200
+    # Get the total count from the response
+    * def totalCount = response.total_count
+    # Divide the total count by 30 (default per_page count) then round to the upper integer to get expected page count
+    * def expectedPages = totalCount / 30
+    * def expectedPagesRoundedUp = Math.ceil(expectedPages)
+    # Round to the lower integer and multiply by 30 to calculate the amount to subtract from total count so we can
+    # check to see if the number of repos on the last page is correct
+    * def expectedPagesRoundedDown = Math.floor(expectedPages)
+    * def amountToSubtractFromTotalCount = expectedPagesRoundedDown * 30
+    * def numberOfReposOnLastPage = totalCount - amountToSubtractFromTotalCount
+
+    # Make another request and pass the calculated last page number to check the count of repos on the last page (16)
+    * params {q: 'user:daveremy', page: '#(expectedPagesRoundedUp)'}
+    When method GET
+    Then status 200
+    # Assert that there are the correct amount of repos on the last page (16)
+    And assert response.items.length == numberOfReposOnLastPage
 
 
   @reusableFeatureDemo
